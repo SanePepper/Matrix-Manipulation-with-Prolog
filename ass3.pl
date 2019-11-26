@@ -1,7 +1,7 @@
-list_get([L1|_],0,L1).
-list_get([L1|L],J,R) :- J1 is J-1, list_get(L,J1,R1), R is R1.
-mat_get([M1|_],0,J,R) :- list_get(M1,J,R), !.
-mat_get([_|M],I,J,R) :- I1 is I-1, mat_get(M,I1,J,R1), R is R1, !.
+list_get([L1|L],0,L1).
+list_get([L1|L],J,R) :- list_get(L,J1,R), J is J1+1.
+mat_get([M1|_],0,J,R) :- list_get(M1,J,R).
+mat_get([_|M],I,J,R) :- mat_get(M,I1,J,R), I is I1+1.
 
 list_sum([],0).
 list_sum([L1|L],S) :- list_sum(L,S1), S is S1+L1.
